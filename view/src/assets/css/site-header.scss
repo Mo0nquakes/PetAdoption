@@ -1,0 +1,205 @@
+/* 全站统一顶部导航栏：游客首页（Index.vue）与登录后用户端（Main.vue）共用这套样式 */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    width: 100%;
+    height: 64px;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+
+    .site-header-inner {
+        max-width: 1200px;
+        height: 64px;
+        margin: 0 auto;
+        padding: 0 15px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .site-brand {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .site-nav-item {
+        padding: 8px 14px;
+        border-radius: 10px;
+        color: #333;
+        font-size: 15px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.25s ease;
+
+        &:hover {
+            background: #f3f4f5;
+        }
+
+        &.active {
+            background: #1a933e;
+            color: #fff;
+        }
+    }
+
+    .site-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+    }
+
+    .site-btn {
+        cursor: pointer;
+        padding: 7px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        line-height: 20px;
+        user-select: none;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+
+        &.ghost {
+            border: 1px solid #dcdfe6;
+            color: #333;
+
+            &:hover {
+                border-color: #1a933e;
+                color: #1a933e;
+            }
+        }
+
+        &.primary {
+            background: #1a933e;
+            color: #fff;
+
+            &:hover {
+                background: #17802f;
+            }
+        }
+    }
+}
+
+/* 已登录用户入口（头像 + 昵称 + 下拉箭头） */
+.user-entry {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px 4px 4px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+
+    &:hover {
+        background: #f3f4f5;
+    }
+
+    .user-entry-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #f3f4f5;
+    }
+
+    .user-entry-name {
+        max-width: 96px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        color: #333;
+    }
+
+    i {
+        font-size: 12px;
+        color: #909399;
+    }
+}
+
+/* 中等屏幕：收窄间距 */
+@media (max-width: 992px) {
+    .site-header .site-header-inner {
+        gap: 12px;
+    }
+
+    .site-header .site-nav {
+        gap: 2px;
+    }
+
+    .site-header .site-nav-item {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
+/* 移动端：品牌与操作按钮一行，导航换到第二行可横向滚动 */
+@media (max-width: 768px) {
+    .site-header {
+        height: auto;
+
+        .site-header-inner {
+            height: auto;
+            flex-wrap: wrap;
+            padding: 8px 12px;
+            row-gap: 6px;
+        }
+
+        .site-nav {
+            order: 3;
+            flex: 0 0 100%;
+            width: 100%;
+            overflow-x: auto;
+            gap: 2px;
+        }
+
+        .site-brand {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .site-nav-item {
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+
+        .site-btn {
+            padding: 5px 14px;
+            font-size: 13px;
+        }
+
+        .site-actions {
+            gap: 8px;
+        }
+
+        .user-entry .user-entry-name {
+            display: none;
+        }
+
+        /* 空间紧张时「分享经验」只留图标 */
+        .share-btn .share-btn-text {
+            display: none;
+        }
+
+        .share-btn {
+            padding: 6px 12px;
+        }
+    }
+}

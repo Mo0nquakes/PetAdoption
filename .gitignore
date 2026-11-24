@@ -1,0 +1,17 @@
+# 依赖
+node_modules/
+# 构建产物
+target/
+dist/
+# IDE
+.idea/
+*.iml
+.vscode/
+# 系统
+.DS_Store
+# 日志
+*.log
+logs/
+# 上传文件（保留 file 目录内已有图片，忽略后续运行产物由使用者自行决定）
+# 如需忽略上传目录请取消下一行注释
+# api/file/
